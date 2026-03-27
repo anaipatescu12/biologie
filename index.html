@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biologie | Liceul „Ana Ipătescu”</title>
+    <title>Chimie-Fizică | Liceul Teoretic „Ana Ipătescu”</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
     <style>
         :root {
-            --primary-color: #1b4332; /* Verde închis */
-            --biology-color: #2d6a4f; /* Verde frunză */
-            --accent-color: #95d5b2; /* Verde deschis */
-            --eco-color: #d4a373; /* Bej pământiu */
-            --bg-light: #f8f9fa;
+            --primary-color: #2c3e50;
+            --chemistry-color: #27ae60;
+            --physics-color: #2980b9;
+            --accent-color: #e67e22;
+            --bg-light: #f4f7f6;
             --white: #ffffff;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: 'Poppins', sans-serif;
@@ -27,11 +31,10 @@
             scroll-behavior: smooth;
         }
 
-        /* --- HEADER (FĂRĂ LOGO-URI) --- */
         header {
-            background: linear-gradient(135deg, var(--primary-color), var(--biology-color));
+            background: linear-gradient(135deg, var(--physics-color), var(--chemistry-color));
             color: white;
-            padding: 100px 20px 140px 20px;
+            padding: 100px 20px;
             text-align: center;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
         }
@@ -42,28 +45,15 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
         }
 
-        /* --- LAYOUT --- */
-        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
-        section { padding: 60px 0; }
+        section { padding: 40px 0; }
 
-        h2 {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        h2::after {
-            content: ''; width: 60px; height: 4px; background: var(--eco-color);
-            position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%);
-        }
-
-        /* --- CATEDRA PROFESORI --- */
+        /* --- CATEDRA PROFESORI (STIL NOU) --- */
         .teachers-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -80,10 +70,12 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.05);
             transition: transform 0.3s ease;
             min-height: 160px;
-            border-left: 10px solid var(--biology-color);
         }
 
         .teacher-card:hover { transform: translateY(-10px); }
+
+        .chemistry-border { border-left: 10px solid var(--chemistry-color); }
+        .physics-border { border-left: 10px solid var(--physics-color); }
 
         .teacher-img img {
             width: 110px !important;
@@ -95,14 +87,16 @@
             flex-shrink: 0;
         }
         
-        .teacher-info h4 { font-size: 1.4rem; margin-bottom: 5px; }
-        .discipline { color: var(--biology-color); font-weight: 600; }
+        .teacher-info h4 { font-size: 1.4rem; margin-bottom: 5px; color: var(--primary-color); }
+        .discipline { color: var(--chemistry-color); font-weight: 600; font-size: 0.9rem; }
+        .discipline-phys { color: var(--physics-color); font-weight: 600; font-size: 0.9rem; }
 
         /* --- CARDS & GRIDS --- */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
+            margin-top: 40px;
         }
 
         .card {
@@ -110,61 +104,89 @@
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            border-top: 5px solid var(--biology-color);
+            transition: 0.3s;
         }
 
-        .icon { font-size: 3rem; margin-bottom: 20px; display: block; color: var(--biology-color); }
+        .img-activity {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: 0.4s;
+        }
+        .img-activity:hover { transform: scale(1.02); }
 
-        /* --- LISTS --- */
+        .video-box {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            background: #000;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         ul { list-style: none; }
         ul li {
-            margin-bottom: 15px;
-            padding-left: 35px;
+            margin-bottom: 12px;
+            padding-left: 30px;
             position: relative;
-            font-size: 1.1rem;
         }
         ul li::before {
-            content: '\f06c'; /* Iconiță frunză */
-            font-family: 'Font Awesome 5 Free';
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
             font-weight: 900;
             position: absolute;
             left: 0;
-            color: var(--biology-color);
+            color: var(--chemistry-color);
         }
 
-        /* --- TESTIMONIALE --- */
         .testimonials {
             background: var(--primary-color);
             color: white;
             padding: 80px 20px;
             border-radius: 50px 50px 0 0;
+            margin-top: 50px;
         }
 
         .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            gap: 20px;
         }
 
         .testimonial-item {
             background: rgba(255,255,255,0.1);
-            padding: 30px;
-            border-left: 5px solid var(--accent-color);
-            border-radius: 0 15px 15px 0;
+            padding: 20px;
+            border-left: 4px solid var(--accent-color);
             font-style: italic;
         }
 
-        .author { display: block; margin-top: 15px; font-weight: bold; color: var(--accent-color); font-style: normal; }
+        .author { display: block; margin-top: 10px; font-weight: bold; color: var(--accent-color); }
 
         footer {
             text-align: center;
-            padding: 50px;
-            background: #081c15;
+            padding: 40px;
+            background: #1a252f;
             color: white;
         }
 
         @media (max-width: 768px) {
-            header h1 { font-size: 2.5rem; }
             .teacher-card { flex-direction: column; text-align: center; }
             .teacher-img img { margin-right: 0; margin-bottom: 15px; }
         }
@@ -173,63 +195,140 @@
 <body>
 
     <header>
-        <h1>Lumea Vie: Biologie</h1>
+        <h1>Științele Naturii: Chimie & Fizică</h1>
         <p>Liceul Teoretic „Ana Ipătescu” Gherla</p>
     </header>
 
     <div class="container">
         
         <section id="profesori">
-            <h2 style="color: var(--biology-color);">Catedra de Biologie</h2>
+            <h2 style="color: var(--chemistry-color) !important;">Catedra de Chimie</h2>
             <div class="teachers-grid">
-                <div class="teacher-card">
-                    <div class="teacher-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ45c5TpNBviqg2cB0eIE0tVPerK2kWPlh3Zw&s"></div>
-                    <div class="teacher-info"><h4>Roman Anamaria</h4><p class="discipline">Profesor de Biologie</p></div>
+                <div class="teacher-card chemistry-border">
+                    <div class="teacher-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ45c5TpNBviqg2cB0eIE0tVPerK2kWPlh3Zw&s" alt="Mureșan Doina"></div>
+                    <div class="teacher-info"><h4>Mureșan Doina</h4><p class="discipline">Profesor de Chimie</p></div>
                 </div>
-                <div class="teacher-card">
-                    <div class="teacher-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ45c5TpNBviqg2cB0eIE0tVPerK2kWPlh3Zw&s"></div>
-                    <div class="teacher-info"><h4>Balint Antoaneta</h4><p class="discipline">Profesor de Biologie</p></div>
+                <div class="teacher-card chemistry-border">
+                    <div class="teacher-img"><img src="laurenta.png" alt="Bărăian Laurența"></div>
+                    <div class="teacher-info"><h4>Bărăian Laurența</h4><p class="discipline">Profesor de Chimie</p></div>
                 </div>
-                <div class="teacher-card">
-                    <div class="teacher-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ45c5TpNBviqg2cB0eIE0tVPerK2kWPlh3Zw&s"></div>
-                    <div class="teacher-info"><h4>Rus Adriana</h4><p class="discipline">Profesor de Biologie</p></div>
+                <div class="teacher-card chemistry-border">
+                    <div class="teacher-img"><img src="Dunca-livia1.png" alt="Dunca Livia"></div>
+                    <div class="teacher-info"><h4>Dunca Livia</h4><p class="discipline">Profesor de Chimie</p></div>
+                </div>
+            </div>
+
+            <h2 style="color: var(--physics-color) !important; margin-top: 60px;">Catedra de Fizică</h2>
+            <div class="teachers-grid">
+                <div class="teacher-card physics-border">
+                    <div class="teacher-img"><img src="cioaba.png" alt="Cioabă Felicia"></div>
+                    <div class="teacher-info"><h4>Cioabă Felicia</h4><p class="discipline-phys">Profesor de Fizică</p></div>
+                </div>
+                <div class="teacher-card physics-border">
+                    <div class="teacher-img"><img src="cosminavadann.png" alt="Vădan Cosmina"></div>
+                    <div class="teacher-info"><h4>Vădan Cosmina</h4><p class="discipline-phys">Profesor de Fizică</p></div>
+                </div>
+                <div class="teacher-card physics-border">
+                    <div class="teacher-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ45c5TpNBviqg2cB0eIE0tVPerK2kWPlh3Zw&s" alt="Tetean Dinu"></div>
+                    <div class="teacher-info"><h4>Tetean Dinu</h4><p class="discipline-phys">Profesor de Fizică</p></div>
                 </div>
             </div>
         </section>
 
-        <section class="grid">
-            <div class="card">
-                <i class="fas fa-dna icon"></i>
-                <h3>Studiul Vieții</h3>
-                <p>De la celule invizibile la ecosisteme complexe, biologia ne învață cum funcționează corpul uman, plantele și animalele.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-leaf icon"></i>
-                <h3>Ecologie și Mediu</h3>
-                <p>Înțelegem importanța biodiversității și rolul nostru în protejarea planetei pentru generațiile viitoare.</p>
-            </div>
-        </section>
-
-        <section id="explorare">
-            <h2>Explorăm Natura</h2>
-            <div class="card" style="max-width: 800px; margin: 0 auto; border-top: none; border-left: 5px solid var(--eco-color);">
-                <ul>
-                    <li><strong>Microscopie:</strong> Descoperim structura celulară a țesuturilor vii.</li>
-                    <li><strong>Anatomie:</strong> Învățăm despre complexitatea aparatelor și sistemelor umane.</li>
-                    <li><strong>Genetică:</strong> Descifrăm codul vieții și mecanismele eredității.</li>
-                    <li><strong>Botanică:</strong> Observăm ciclul de viață al plantelor în laborator.</li>
-                </ul>
+        <section>
+            <h2 style="color: var(--chemistry-color) !important;">Laboratorul în Acțiune</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="laborator_chimie.png" class="img-activity" alt="Laborator">
+                </div>
+                <div class="card">
+                    <div style="display: flex; flex-direction: column; gap: 15px;">
+                        <img src="chimie1.jpg" class="img-activity">
+                        <img src="chimie2.jpg" class="img-activity">
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="chimie92.jpg" class="img-activity">
+                    <div style="display: flex; gap: 10px; margin-top: 15px;">
+                        <img src="chimie3.jpg" style="width: 48%; border-radius: 10px;">
+                        <img src="chimie4.jpg" style="width: 48%; border-radius: 10px;">
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="grid">
-            <div class="card">
-                <h3><i class="fas fa-microscope icon" style="font-size: 2rem;"></i> Laborator Modern</h3>
-                <p>Dispunem de mulaje anatomice, microscoape și preparate biologice pentru o învățare vizuală și tactilă.</p>
+        <section style="background: #eef2f3; padding: 40px; border-radius: 30px;">
+            <h2 style="color: var(--physics-color) !important;">Tehnologie și Robotică</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="video-box">
+                        <video controls style="width: 100%;">
+                            <source src="robot_fizica.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <h4>Proiecte de Robotică</h4>
+                </div>
+                <div class="card">
+                    <div class="video-box">
+                        <video controls style="width: 100%;">
+                            <source src="experiment_fizica.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <h4>Experimente Live</h4>
+                </div>
             </div>
-            <div class="card">
-                <h3><i class="fas fa-seedling icon" style="font-size: 2rem;"></i> Proiecte Eco</h3>
-                <p>Participăm activ la campanii de ecologizare și proiecte de cercetare a florei și faunei locale.</p>
+            <div class="grid" style="margin-top: 20px;">
+                <img src="expfizica1.jpg" class="img-activity">
+                <img src="fizicap1.jpg" class="img-activity">
+                <img src="9a_fizica.jpg" class="img-activity">
+            </div>
+        </section>
+
+        <section>
+            <h2>Explorări și Vizite</h2>
+            <div class="grid">
+                <div class="card">
+                    <img src="utcn_fizica.jpg" class="img-activity">
+                    <h4 style="margin-top:15px; text-align:center;">Vizite la UTCN</h4>
+                </div>
+                <div class="card">
+                    <img src="pompieri_fizica.jpg" class="img-activity">
+                    <h4 style="margin-top:15px; text-align:center;">Fizica la Pompieri</h4>
+                </div>
+                <div class="card">
+                    <img src="drumetie_fizica_chimie.jpg" class="img-activity">
+                    <h4 style="margin-top:15px; text-align:center;">Știința în Natură</h4>
+                </div>
+            </div>
+            <div class="grid">
+                 <div class="card">
+                    <img src="sapt_spatiului.jpg" class="img-activity">
+                    <h4 style="margin-top:15px; text-align:center;">Săptămâna Spațiului</h4>
+                </div>
+                <div class="card">
+                    <img src="fizica_costumatii.jpg" class="img-activity">
+                    <h4 style="margin-top:15px; text-align:center;">Știința și Arta</h4>
+                </div>
+                <div class="card">
+                    <img src="energie_regenerabila.jpg" class="img-activity">
+                    <h4 style="margin-top:15px; text-align:center;">Energie Regenerabilă</h4>
+                </div>
+            </div>
+        </section>
+
+        <section id="aplicatii">
+            <h2>De ce studiem Științele Naturii?</h2>
+            <div class="grid">
+                <div class="card" style="border-top: 5px solid var(--chemistry-color);">
+                    <i class="fas fa-flask icon" style="color: var(--chemistry-color);"></i>
+                    <h3>Chimie</h3>
+                    <p>Înțelegem compoziția lumii, de la medicamente la procesele vitale. Este știința transformării materiilor.</p>
+                </div>
+                <div class="card" style="border-top: 5px solid var(--physics-color);">
+                    <i class="fas fa-atom icon" style="color: var(--physics-color);"></i>
+                    <h3>Fizică</h3>
+                    <p>Explicăm legile fundamentale: mișcarea, energia și lumina. Este baza oricărei tehnologii moderne.</p>
+                </div>
             </div>
         </section>
 
@@ -237,10 +336,12 @@
 
     <section class="testimonials">
         <div class="container">
-            <h2 style="color: var(--accent-color);">Vocea Elevilor</h2>
+            <h2 style="color: #e67e22 !important;">Cum văd elevii orele?</h2>
             <div class="testimonial-grid">
-                <div class="testimonial-item">"Laboratorul de biologie este locul unde natura prinde viață sub microscop." <span class="author">Elev, Clasa a X-a</span></div>
-                <div class="testimonial-item">"Am învățat cât de important este să respectăm echilibrul naturii." <span class="author">Elev, Clasa a XI-a</span></div>
+                <div class="testimonial-item">"Ora de chimie îmi place când facem experimente." <span class="author">Ariana, 11A</span></div>
+                <div class="testimonial-item">"La fizică mi se pare interesant când legăm lecțiile de viață." <span class="author">Eliza, 12B</span></div>
+                <div class="testimonial-item">"Dacă sunt atent, încep să înțeleg orice formulă." <span class="author">Berta, 11B</span></div>
+                <div class="testimonial-item">"Îmi plac orele în care lucrăm în echipă." <span class="author">Albert, 12A</span></div>
             </div>
         </div>
     </section>
