@@ -27,35 +27,24 @@
             scroll-behavior: smooth;
         }
 
-        /* --- HEADER & LOGOS --- */
+        /* --- HEADER (FĂRĂ LOGO-URI) --- */
         header {
             background: linear-gradient(135deg, var(--primary-color), var(--biology-color));
             color: white;
-            padding: 80px 20px 120px 20px;
+            padding: 100px 20px 140px 20px;
             text-align: center;
             clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
-        }
-
-        .logo-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 50px;
-            margin-bottom: 30px;
-            flex-wrap: wrap;
-        }
-
-        .logo-container img {
-            height: 160px !important;
-            width: auto;
-            flex-shrink: 0;
-            filter: drop-shadow(3px 3px 10px rgba(0,0,0,0.3));
         }
 
         header h1 {
             font-size: 3.5rem;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
         }
 
         /* --- LAYOUT --- */
@@ -176,7 +165,6 @@
 
         @media (max-width: 768px) {
             header h1 { font-size: 2.5rem; }
-            .logo-container img { height: 100px !important; }
             .teacher-card { flex-direction: column; text-align: center; }
             .teacher-img img { margin-right: 0; margin-bottom: 15px; }
         }
@@ -185,9 +173,6 @@
 <body>
 
     <header>
-        <div class="logo-container">
-            <img src="Logo_LTAI.png" alt="Logo LTAI">
-            <img src="LogoCatedra_Biologie.png" alt="Logo Catedra"> </div>
         <h1>Lumea Vie: Biologie</h1>
         <p>Liceul Teoretic „Ana Ipătescu” Gherla</p>
     </header>
@@ -199,14 +184,22 @@
             <div class="teachers-grid">
                 <div class="teacher-card">
                     <div class="teacher-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ45c5TpNBviqg2cB0eIE0tVPerK2kWPlh3Zw&s"></div>
-                    <div class="teacher-info"><h4>Nume Profesor</h4><p class="discipline">Profesor de Biologie</p></div>
+                    <div class="teacher-info"><h4>Roman Anamaria</h4><p class="discipline">Profesor de Biologie</p></div>
+                </div>
+                <div class="teacher-card">
+                    <div class="teacher-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ45c5TpNBviqg2cB0eIE0tVPerK2kWPlh3Zw&s"></div>
+                    <div class="teacher-info"><h4>Balint Antoaneta</h4><p class="discipline">Profesor de Biologie</p></div>
+                </div>
+                <div class="teacher-card">
+                    <div class="teacher-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ45c5TpNBviqg2cB0eIE0tVPerK2kWPlh3Zw&s"></div>
+                    <div class="teacher-info"><h4>Rus Adriana</h4><p class="discipline">Profesor de Biologie</p></div>
                 </div>
             </div>
         </section>
 
         <section class="grid">
             <div class="card">
-                <i class="fas fa-microscope icon"></i>
+                <i class="fas fa-dna icon"></i>
                 <h3>Studiul Vieții</h3>
                 <p>De la celule invizibile la ecosisteme complexe, biologia ne învață cum funcționează corpul uman, plantele și animalele.</p>
             </div>
@@ -217,7 +210,7 @@
             </div>
         </section>
 
-        <section id="aplicatii">
+        <section id="explorare">
             <h2>Explorăm Natura</h2>
             <div class="card" style="max-width: 800px; margin: 0 auto; border-top: none; border-left: 5px solid var(--eco-color);">
                 <ul>
@@ -231,7 +224,7 @@
 
         <section class="grid">
             <div class="card">
-                <h3><i class="fas fa-dna icon" style="font-size: 2rem;"></i> Laborator Modern</h3>
+                <h3><i class="fas fa-microscope icon" style="font-size: 2rem;"></i> Laborator Modern</h3>
                 <p>Dispunem de mulaje anatomice, microscoape și preparate biologice pentru o învățare vizuală și tactilă.</p>
             </div>
             <div class="card">
