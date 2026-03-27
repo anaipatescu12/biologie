@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biologie | Liceul „Ana Ipătescu”</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #1b4332; /* Verde închis */
+            --biology-color: #2d6a4f; /* Verde frunză */
+            --accent-color: #95d5b2; /* Verde deschis */
+            --eco-color: #d4a373; /* Bej pământiu */
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: var(--primary-color);
+            background-color: var(--bg-light);
+            scroll-behavior: smooth;
+        }
+
+        /* --- HEADER & LOGOS --- */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--biology-color));
+            color: white;
+            padding: 80px 20px 120px 20px;
+            text-align: center;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .logo-container img {
+            height: 160px !important;
+            width: auto;
+            flex-shrink: 0;
+            filter: drop-shadow(3px 3px 10px rgba(0,0,0,0.3));
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* --- LAYOUT --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+        section { padding: 60px 0; }
+
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        h2::after {
+            content: ''; width: 60px; height: 4px; background: var(--eco-color);
+            position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%);
+        }
+
+        /* --- CATEDRA PROFESORI --- */
+        .teachers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .teacher-card {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            min-height: 160px;
+            border-left: 10px solid var(--biology-color);
+        }
+
+        .teacher-card:hover { transform: translateY(-10px); }
+
+        .teacher-img img {
+            width: 110px !important;
+            height: 110px !important;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 25px;
+            border: 4px solid #f0f0f0;
+            flex-shrink: 0;
+        }
+        
+        .teacher-info h4 { font-size: 1.4rem; margin-bottom: 5px; }
+        .discipline { color: var(--biology-color); font-weight: 600; }
+
+        /* --- CARDS & GRIDS --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-top: 5px solid var(--biology-color);
+        }
+
+        .icon { font-size: 3rem; margin-bottom: 20px; display: block; color: var(--biology-color); }
+
+        /* --- LISTS --- */
+        ul { list-style: none; }
+        ul li {
+            margin-bottom: 15px;
+            padding-left: 35px;
+            position: relative;
+            font-size: 1.1rem;
+        }
+        ul li::before {
+            content: '\f06c'; /* Iconiță frunză */
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--biology-color);
+        }
+
+        /* --- TESTIMONIALE --- */
+        .testimonials {
+            background: var(--primary-color);
+            color: white;
+            padding: 80px 20px;
+            border-radius: 50px 50px 0 0;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .testimonial-item {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-left: 5px solid var(--accent-color);
+            border-radius: 0 15px 15px 0;
+            font-style: italic;
+        }
+
+        .author { display: block; margin-top: 15px; font-weight: bold; color: var(--accent-color); font-style: normal; }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            background: #081c15;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            .logo-container img { height: 100px !important; }
+            .teacher-card { flex-direction: column; text-align: center; }
+            .teacher-img img { margin-right: 0; margin-bottom: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="Logo_LTAI.png" alt="Logo LTAI">
+            <img src="LogoCatedra_Biologie.png" alt="Logo Catedra"> </div>
+        <h1>Lumea Vie: Biologie</h1>
+        <p>Liceul Teoretic „Ana Ipătescu” Gherla</p>
+    </header>
+
+    <div class="container">
+        
+        <section id="profesori">
+            <h2 style="color: var(--biology-color);">Catedra de Biologie</h2>
+            <div class="teachers-grid">
+                <div class="teacher-card">
+                    <div class="teacher-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ45c5TpNBviqg2cB0eIE0tVPerK2kWPlh3Zw&s"></div>
+                    <div class="teacher-info"><h4>Nume Profesor</h4><p class="discipline">Profesor de Biologie</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid">
+            <div class="card">
+                <i class="fas fa-microscope icon"></i>
+                <h3>Studiul Vieții</h3>
+                <p>De la celule invizibile la ecosisteme complexe, biologia ne învață cum funcționează corpul uman, plantele și animalele.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-leaf icon"></i>
+                <h3>Ecologie și Mediu</h3>
+                <p>Înțelegem importanța biodiversității și rolul nostru în protejarea planetei pentru generațiile viitoare.</p>
+            </div>
+        </section>
+
+        <section id="aplicatii">
+            <h2>Explorăm Natura</h2>
+            <div class="card" style="max-width: 800px; margin: 0 auto; border-top: none; border-left: 5px solid var(--eco-color);">
+                <ul>
+                    <li><strong>Microscopie:</strong> Descoperim structura celulară a țesuturilor vii.</li>
+                    <li><strong>Anatomie:</strong> Învățăm despre complexitatea aparatelor și sistemelor umane.</li>
+                    <li><strong>Genetică:</strong> Descifrăm codul vieții și mecanismele eredității.</li>
+                    <li><strong>Botanică:</strong> Observăm ciclul de viață al plantelor în laborator.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="grid">
+            <div class="card">
+                <h3><i class="fas fa-dna icon" style="font-size: 2rem;"></i> Laborator Modern</h3>
+                <p>Dispunem de mulaje anatomice, microscoape și preparate biologice pentru o învățare vizuală și tactilă.</p>
+            </div>
+            <div class="card">
+                <h3><i class="fas fa-seedling icon" style="font-size: 2rem;"></i> Proiecte Eco</h3>
+                <p>Participăm activ la campanii de ecologizare și proiecte de cercetare a florei și faunei locale.</p>
+            </div>
+        </section>
+
+    </div>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 style="color: var(--accent-color);">Vocea Elevilor</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-item">"Laboratorul de biologie este locul unde natura prinde viață sub microscop." <span class="author">Elev, Clasa a X-a</span></div>
+                <div class="testimonial-item">"Am învățat cât de important este să respectăm echilibrul naturii." <span class="author">Elev, Clasa a XI-a</span></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; Liceul Teoretic „Ana Ipătescu” Gherla, 2026</p>
+    </footer>
+
+</body>
+</html>
