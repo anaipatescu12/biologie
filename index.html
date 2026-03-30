@@ -1,354 +1,1161 @@
 <!DOCTYPE html>
+
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chimie-Fizică | Liceul Teoretic „Ana Ipătescu”</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary-color: #2c3e50;
-            --chemistry-color: #27ae60;
-            --physics-color: #2980b9;
-            --accent-color: #e67e22;
-            --bg-light: #f4f7f6;
-            --white: #ffffff;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biologie — Liceul Teoretic „Ana Ipătescu"</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --bio: #2d6a4f;
+  --bio-light: #e8f5ef;
+  --bio-mid: #40916c;
+  --bio-bright: #52b788;
+  --earth: #6b4226;
+  --earth-light: #f5ede8;
+  --gold: #b5883e;
+  --gold-light: #fdf6e7;
+  --dark: #101c14;
+  --text: #1b2d22;
+  --muted: #5a7265;
+  --border: #d8ebe0;
+  --bg: #f6faf7;
+  --white: #ffffff;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Jost', system-ui, sans-serif;
+  --radius: 18px;
+  --radius-sm: 10px;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
-            color: var(--primary-color);
-            background-color: var(--bg-light);
-            scroll-behavior: smooth;
-        }
+body {
+font-family: var(–sans);
+background: var(–bg);
+color: var(–text);
+line-height: 1.6;
+overflow-x: hidden;
+}
 
-        header {
-            background: linear-gradient(135deg, var(--physics-color), var(--chemistry-color));
-            color: white;
-            padding: 100px 20px;
-            text-align: center;
-            clip-path: polygon(0 0, 100% 0, 100% 85%, 0% 100%);
-        }
+/* ========== NAV ========== */
+nav {
+position: fixed;
+top: 0; left: 0; right: 0;
+z-index: 100;
+background: rgba(246,250,247,0.92);
+backdrop-filter: blur(14px);
+border-bottom: 1px solid var(–border);
+padding: 0 40px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+height: 64px;
+}
 
-        header h1 {
-            font-size: 3.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-        }
+.nav-logo {
+font-family: var(–serif);
+font-size: 1.15rem;
+color: var(–text);
+text-decoration: none;
+display: flex;
+align-items: center;
+gap: 10px;
+}
 
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+.nav-logo .logo-icon {
+width: 34px; height: 34px;
+background: linear-gradient(135deg, var(–bio), var(–bio-bright));
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 15px;
+color: white;
+}
 
-        section { padding: 40px 0; }
+.nav-links {
+display: flex;
+gap: 32px;
+list-style: none;
+}
 
-        /* --- CATEDRA PROFESORI (STIL NOU) --- */
-        .teachers-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
-        }
+.nav-links a {
+font-size: 0.875rem;
+color: var(–muted);
+text-decoration: none;
+font-weight: 500;
+transition: color 0.2s;
+letter-spacing: 0.04em;
+}
 
-        .teacher-card {
-            display: flex;
-            align-items: center;
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-            min-height: 160px;
-        }
+.nav-links a:hover { color: var(–bio); }
 
-        .teacher-card:hover { transform: translateY(-10px); }
+/* ========== HERO ========== */
+.hero {
+min-height: 100vh;
+padding-top: 64px;
+display: grid;
+grid-template-columns: 1fr 1fr;
+overflow: hidden;
+}
 
-        .chemistry-border { border-left: 10px solid var(--chemistry-color); }
-        .physics-border { border-left: 10px solid var(--physics-color); }
+.hero-left {
+padding: 80px 64px 80px 80px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+position: relative;
+}
 
-        .teacher-img img {
-            width: 110px !important;
-            height: 110px !important;
-            border-radius: 50%;
-            object-fit: cover;
-            margin-right: 25px;
-            border: 4px solid #f0f0f0;
-            flex-shrink: 0;
-        }
-        
-        .teacher-info h4 { font-size: 1.4rem; margin-bottom: 5px; color: var(--primary-color); }
-        .discipline { color: var(--chemistry-color); font-weight: 600; font-size: 0.9rem; }
-        .discipline-phys { color: var(--physics-color); font-weight: 600; font-size: 0.9rem; }
+/* Leaf pattern bg */
+.hero-left::before {
+content: ‘’;
+position: absolute;
+right: -60px;
+top: 50%;
+transform: translateY(-50%);
+width: 300px;
+height: 300px;
+background: radial-gradient(circle, var(–bio-light) 0%, transparent 70%);
+pointer-events: none;
+}
 
-        /* --- CARDS & GRIDS --- */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
+.hero-eyebrow {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+font-size: 0.75rem;
+font-weight: 600;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: var(–muted);
+margin-bottom: 28px;
+}
 
-        .card {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            transition: 0.3s;
-        }
+.hero-eyebrow::before {
+content: ‘’;
+display: block;
+width: 28px;
+height: 2px;
+background: var(–bio-bright);
+}
 
-        .img-activity {
-            width: 100%;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: 0.4s;
-        }
-        .img-activity:hover { transform: scale(1.02); }
+.hero h1 {
+font-family: var(–serif);
+font-size: clamp(3rem, 4.8vw, 5rem);
+line-height: 1.08;
+color: var(–dark);
+margin-bottom: 28px;
+}
 
-        .video-box {
-            width: 100%;
-            border-radius: 15px;
-            overflow: hidden;
-            background: #000;
-            margin-bottom: 15px;
-        }
+.hero h1 em {
+font-style: italic;
+color: var(–bio);
+}
 
-        h2 {
-            text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 40px;
-            position: relative;
-        }
+.hero h1 .accent-word {
+position: relative;
+display: inline-block;
+}
 
-        h2::after {
-            content: '';
-            width: 60px;
-            height: 4px;
-            background: var(--accent-color);
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
+.hero h1 .accent-word::after {
+content: ‘’;
+position: absolute;
+bottom: 4px;
+left: 0;
+right: 0;
+height: 3px;
+background: var(–bio-bright);
+opacity: 0.5;
+border-radius: 2px;
+}
 
-        ul { list-style: none; }
-        ul li {
-            margin-bottom: 12px;
-            padding-left: 30px;
-            position: relative;
-        }
-        ul li::before {
-            content: '\f00c';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            left: 0;
-            color: var(--chemistry-color);
-        }
+.hero-sub {
+font-size: 1.05rem;
+color: var(–muted);
+max-width: 440px;
+margin-bottom: 48px;
+line-height: 1.8;
+font-weight: 300;
+}
 
-        .testimonials {
-            background: var(--primary-color);
-            color: white;
-            padding: 80px 20px;
-            border-radius: 50px 50px 0 0;
-            margin-top: 50px;
-        }
+.hero-cta {
+display: flex;
+gap: 20px;
+align-items: center;
+}
 
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
+.btn-primary {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+background: var(–bio);
+color: white;
+padding: 15px 32px;
+border-radius: 50px;
+font-size: 0.9rem;
+font-weight: 500;
+text-decoration: none;
+letter-spacing: 0.02em;
+transition: all 0.3s;
+}
 
-        .testimonial-item {
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
-            border-left: 4px solid var(--accent-color);
-            font-style: italic;
-        }
+.btn-primary:hover {
+background: var(–bio-mid);
+transform: translateY(-2px);
+box-shadow: 0 10px 28px rgba(45,106,79,0.28);
+}
 
-        .author { display: block; margin-top: 10px; font-weight: bold; color: var(--accent-color); }
+.btn-ghost {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+color: var(–muted);
+font-size: 0.9rem;
+font-weight: 500;
+text-decoration: none;
+transition: color 0.2s;
+}
 
-        footer {
-            text-align: center;
-            padding: 40px;
-            background: #1a252f;
-            color: white;
-        }
+.btn-ghost:hover { color: var(–bio); }
 
-        @media (max-width: 768px) {
-            .teacher-card { flex-direction: column; text-align: center; }
-            .teacher-img img { margin-right: 0; margin-bottom: 15px; }
-        }
-    </style>
+/* HERO RIGHT — organic illustration area */
+.hero-right {
+position: relative;
+background: var(–dark);
+overflow: hidden;
+display: flex;
+align-items: stretch;
+}
+
+.hero-bg-pattern {
+position: absolute;
+inset: 0;
+opacity: 0.06;
+background-image: radial-gradient(circle at 2px 2px, #52b788 1px, transparent 0);
+background-size: 28px 28px;
+}
+
+.hero-overlay {
+position: absolute;
+inset: 0;
+background: radial-gradient(ellipse at 30% 50%, rgba(45,106,79,0.35), transparent 70%),
+radial-gradient(ellipse at 70% 80%, rgba(82,183,136,0.15), transparent 60%);
+}
+
+.hero-svg-decoration {
+position: absolute;
+inset: 0;
+opacity: 0.2;
+}
+
+.hero-panels {
+position: relative;
+z-index: 2;
+display: flex;
+flex-direction: column;
+width: 100%;
+padding: 60px 48px;
+gap: 28px;
+justify-content: center;
+}
+
+.hero-panel-card {
+background: rgba(255,255,255,0.05);
+border: 1px solid rgba(255,255,255,0.1);
+border-radius: var(–radius);
+padding: 28px 32px;
+display: flex;
+align-items: center;
+gap: 20px;
+transition: all 0.3s;
+}
+
+.hero-panel-card:hover {
+background: rgba(82,183,136,0.12);
+border-color: rgba(82,183,136,0.3);
+transform: translateX(4px);
+}
+
+.hero-panel-emoji {
+font-size: 2rem;
+flex-shrink: 0;
+width: 56px; height: 56px;
+background: rgba(82,183,136,0.15);
+border-radius: 14px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.hero-panel-card h3 {
+font-family: var(–serif);
+font-size: 1.2rem;
+color: white;
+margin-bottom: 4px;
+}
+
+.hero-panel-card p {
+font-size: 0.82rem;
+color: rgba(255,255,255,0.5);
+line-height: 1.5;
+}
+
+/* ========== STATS ========== */
+.stats-bar {
+background: var(–bio);
+}
+
+.stats-inner {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+}
+
+.stat-item {
+padding: 36px 40px;
+border-right: 1px solid rgba(255,255,255,0.15);
+text-align: center;
+}
+
+.stat-item:last-child { border-right: none; }
+
+.stat-num {
+font-family: var(–serif);
+font-size: 2.6rem;
+color: white;
+display: block;
+line-height: 1;
+margin-bottom: 8px;
+}
+
+.stat-label {
+font-size: 0.75rem;
+color: rgba(255,255,255,0.6);
+font-weight: 500;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+}
+
+/* ========== SECTIONS ========== */
+.container { max-width: 1140px; margin: 0 auto; padding: 0 40px; }
+section { padding: 96px 0; }
+
+.section-tag {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+font-size: 0.75rem;
+font-weight: 600;
+letter-spacing: 0.1em;
+text-transform: uppercase;
+color: var(–bio-mid);
+margin-bottom: 16px;
+}
+
+.section-title {
+font-family: var(–serif);
+font-size: clamp(2rem, 3.5vw, 3rem);
+line-height: 1.15;
+color: var(–dark);
+margin-bottom: 16px;
+}
+
+.section-desc {
+font-size: 1rem;
+color: var(–muted);
+max-width: 560px;
+line-height: 1.8;
+margin-bottom: 56px;
+font-weight: 300;
+}
+
+/* ========== WHY CARDS ========== */
+.why-grid {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 2px;
+border-radius: var(–radius);
+overflow: hidden;
+box-shadow: 0 4px 48px rgba(0,0,0,0.06);
+}
+
+.why-card {
+background: var(–white);
+padding: 52px 48px;
+position: relative;
+overflow: hidden;
+cursor: default;
+transition: background 0.3s;
+}
+
+.why-card::after {
+content: ‘’;
+position: absolute;
+bottom: -20px;
+right: -20px;
+width: 120px;
+height: 120px;
+border-radius: 50%;
+opacity: 0;
+transition: opacity 0.4s, transform 0.4s;
+transform: scale(0.6);
+}
+
+.why-card.bio::after { background: var(–bio-light); }
+.why-card.earth::after { background: var(–earth-light); }
+.why-card.gold::after { background: var(–gold-light); }
+.why-card.dark-card::after { background: #f0f6f3; }
+
+.why-card:hover::after { opacity: 1; transform: scale(1); }
+
+.why-card > * { position: relative; z-index: 1; }
+
+.why-icon {
+width: 54px; height: 54px;
+border-radius: 14px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.3rem;
+margin-bottom: 24px;
+}
+
+.bio .why-icon { background: var(–bio-light); color: var(–bio); }
+.earth .why-icon { background: var(–earth-light); color: var(–earth); }
+.gold .why-icon { background: var(–gold-light); color: var(–gold); }
+.dark-card .why-icon { background: #e8f2ec; color: var(–bio-mid); }
+
+.why-card h3 {
+font-family: var(–serif);
+font-size: 1.5rem;
+margin-bottom: 14px;
+color: var(–dark);
+}
+
+.why-card p {
+font-size: 0.94rem;
+color: var(–muted);
+line-height: 1.8;
+font-weight: 300;
+}
+
+/* ========== TEACHERS ========== */
+#profesori { background: var(–dark); }
+
+#profesori .section-tag { color: rgba(82,183,136,0.7); }
+#profesori .section-title { color: white; }
+#profesori .section-desc { color: rgba(255,255,255,0.45); }
+
+.dept-label {
+font-size: 0.75rem;
+font-weight: 700;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+padding: 7px 16px;
+border-radius: 50px;
+display: inline-block;
+margin-bottom: 32px;
+}
+
+.dept-label.bio-lbl { background: rgba(82,183,136,0.15); color: #7de3b0; }
+
+.teachers-row {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 20px;
+}
+
+.teacher-card {
+background: rgba(255,255,255,0.04);
+border: 1px solid rgba(255,255,255,0.08);
+border-radius: var(–radius);
+padding: 36px 28px;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+gap: 16px;
+transition: all 0.35s;
+}
+
+.teacher-card:hover {
+background: rgba(82,183,136,0.08);
+border-color: rgba(82,183,136,0.25);
+transform: translateY(-4px);
+box-shadow: 0 20px 48px rgba(0,0,0,0.2);
+}
+
+.teacher-avatar {
+width: 100px;
+height: 100px;
+border-radius: 50%;
+object-fit: cover;
+flex-shrink: 0;
+border: 3px solid rgba(82,183,136,0.3);
+transition: border-color 0.3s;
+}
+
+.teacher-card:hover .teacher-avatar {
+border-color: rgba(82,183,136,0.7);
+}
+
+.teacher-avatar-placeholder {
+width: 100px;
+height: 100px;
+border-radius: 50%;
+flex-shrink: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+font-family: var(–serif);
+font-size: 1.6rem;
+color: white;
+background: rgba(82,183,136,0.2);
+border: 3px solid rgba(82,183,136,0.2);
+}
+
+.teacher-info h4 {
+font-family: var(–serif);
+font-size: 1.15rem;
+color: white;
+margin-bottom: 4px;
+}
+
+.teacher-info span {
+font-size: 0.8rem;
+font-weight: 500;
+color: #7de3b0;
+letter-spacing: 0.04em;
+}
+
+/* ========== ACTIVITIES ========== */
+.activities-section { background: var(–white); }
+
+.activities-layout {
+display: grid;
+grid-template-columns: 5fr 4fr;
+gap: 64px;
+align-items: start;
+}
+
+.activity-item {
+background: var(–bg);
+border: 1px solid var(–border);
+border-left: 3px solid var(–bio-bright);
+border-radius: var(–radius-sm);
+padding: 24px 28px;
+display: flex;
+align-items: flex-start;
+gap: 20px;
+transition: all 0.25s;
+margin-bottom: 14px;
+}
+
+.activity-item:hover {
+border-left-color: var(–bio);
+box-shadow: 0 6px 24px rgba(45,106,79,0.1);
+transform: translateX(5px);
+background: var(–white);
+}
+
+.activity-num {
+font-family: var(–serif);
+font-size: 1.9rem;
+font-style: italic;
+color: var(–bio-light);
+line-height: 1;
+min-width: 36px;
+}
+
+.activity-content h4 {
+font-weight: 600;
+font-size: 0.95rem;
+color: var(–dark);
+margin-bottom: 5px;
+letter-spacing: 0.02em;
+}
+
+.activity-content p {
+font-size: 0.875rem;
+color: var(–muted);
+line-height: 1.65;
+font-weight: 300;
+}
+
+/* ========== GALERIE ========== */
+.media-section { background: var(–bg); }
+
+.media-grid {
+display: grid;
+grid-template-columns: 2fr 1fr 1fr;
+grid-template-rows: 220px 220px;
+gap: 10px;
+border-radius: var(–radius);
+overflow: hidden;
+margin-bottom: 40px;
+}
+
+.media-item {
+background: var(–border);
+position: relative;
+overflow: hidden;
+}
+
+.media-item:first-child { grid-row: span 2; }
+
+.media-item img, .media-item video {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+transition: transform 0.5s ease;
+}
+
+.media-item:hover img, .media-item:hover video {
+transform: scale(1.05);
+}
+
+.media-label {
+position: absolute;
+bottom: 0; left: 0; right: 0;
+background: linear-gradient(transparent, rgba(16,28,20,0.7));
+color: white;
+padding: 32px 16px 14px;
+font-size: 0.8rem;
+font-weight: 600;
+letter-spacing: 0.05em;
+opacity: 0;
+transition: opacity 0.3s;
+}
+
+.media-item:hover .media-label { opacity: 1; }
+
+.media-placeholder {
+background: linear-gradient(135deg, var(–bio-light), #d4edda);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 2.5rem;
+color: var(–bio);
+opacity: 0.5;
+}
+
+.gallery-sub-label {
+font-size: 0.75rem;
+font-weight: 700;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+padding: 7px 16px;
+border-radius: 50px;
+display: inline-block;
+margin-bottom: 20px;
+background: rgba(45,106,79,0.1);
+color: var(–bio-mid);
+}
+
+/* ========== TESTIMONIALS ========== */
+.testimonials-section {
+background: var(–dark);
+position: relative;
+overflow: hidden;
+}
+
+.testimonials-section::before {
+content: ‘🌿’;
+position: absolute;
+top: -20px;
+right: 60px;
+font-size: 260px;
+opacity: 0.04;
+pointer-events: none;
+}
+
+.testimonials-section .section-tag { color: rgba(82,183,136,0.7); }
+.testimonials-section .section-title { color: white; }
+
+.testimonials-grid {
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: 24px;
+}
+
+.testimonial-card {
+background: rgba(255,255,255,0.04);
+border: 1px solid rgba(255,255,255,0.08);
+border-radius: var(–radius);
+padding: 36px 32px;
+position: relative;
+transition: all 0.3s;
+}
+
+.testimonial-card:hover {
+background: rgba(82,183,136,0.07);
+border-color: rgba(82,183,136,0.2);
+transform: translateY(-3px);
+}
+
+.testimonial-card::before {
+content: ‘”’;
+font-family: var(–serif);
+font-size: 5rem;
+color: var(–bio-bright);
+opacity: 0.2;
+position: absolute;
+top: 8px;
+left: 22px;
+line-height: 1;
+}
+
+.testimonial-card blockquote {
+font-family: var(–serif);
+font-style: italic;
+font-size: 1.05rem;
+color: rgba(255,255,255,0.85);
+line-height: 1.65;
+margin-bottom: 24px;
+padding-top: 24px;
+}
+
+.testimonial-author {
+display: flex;
+align-items: center;
+gap: 12px;
+}
+
+.author-dot {
+width: 38px;
+height: 38px;
+border-radius: 50%;
+background: rgba(82,183,136,0.2);
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 0.8rem;
+font-weight: 700;
+color: #7de3b0;
+}
+
+.testimonial-author span {
+font-size: 0.83rem;
+font-weight: 500;
+color: rgba(255,255,255,0.45);
+}
+
+/* ========== FOOTER ========== */
+footer {
+background: #080f0a;
+color: rgba(255,255,255,0.35);
+padding: 52px 0;
+text-align: center;
+}
+
+footer .footer-logo {
+font-family: var(–serif);
+font-size: 1.5rem;
+color: white;
+margin-bottom: 12px;
+}
+
+footer .footer-icon {
+font-size: 2rem;
+margin-bottom: 12px;
+display: block;
+}
+
+footer p { font-size: 0.85rem; }
+footer strong { color: rgba(255,255,255,0.65); }
+
+/* ========== ANIMATIONS ========== */
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(20px); }
+to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-in {
+opacity: 0;
+animation: fadeUp 0.7s ease forwards;
+}
+
+.delay-1 { animation-delay: 0.12s; }
+.delay-2 { animation-delay: 0.24s; }
+.delay-3 { animation-delay: 0.36s; }
+
+.reveal {
+opacity: 0;
+transform: translateY(22px);
+transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal.visible {
+opacity: 1;
+transform: translateY(0);
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 900px) {
+nav { padding: 0 20px; }
+.nav-links { display: none; }
+.hero { grid-template-columns: 1fr; }
+.hero-right { min-height: 340px; }
+.hero-left { padding: 60px 24px; }
+.container { padding: 0 20px; }
+.why-grid { grid-template-columns: 1fr; }
+.teachers-row { grid-template-columns: 1fr; }
+.activities-layout { grid-template-columns: 1fr; }
+.media-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+.media-item:first-child { grid-row: span 1; }
+.testimonials-grid { grid-template-columns: 1fr; }
+.stats-inner { grid-template-columns: 1fr 1fr; }
+}
+</style>
+
 </head>
 <body>
 
-    <header>
-        <h1>Științele Naturii: Chimie & Fizică</h1>
-        <p>Liceul Teoretic „Ana Ipătescu” Gherla</p>
-    </header>
+<!-- NAV -->
 
-    <div class="container">
-        
-        <section id="profesori">
-            <h2 style="color: var(--chemistry-color) !important;">Catedra de Chimie</h2>
-            <div class="teachers-grid">
-                <div class="teacher-card chemistry-border">
-                    <div class="teacher-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ45c5TpNBviqg2cB0eIE0tVPerK2kWPlh3Zw&s" alt="Mureșan Doina"></div>
-                    <div class="teacher-info"><h4>Mureșan Doina</h4><p class="discipline">Profesor de Chimie</p></div>
-                </div>
-                <div class="teacher-card chemistry-border">
-                    <div class="teacher-img"><img src="laurenta.png" alt="Bărăian Laurența"></div>
-                    <div class="teacher-info"><h4>Bărăian Laurența</h4><p class="discipline">Profesor de Chimie</p></div>
-                </div>
-                <div class="teacher-card chemistry-border">
-                    <div class="teacher-img"><img src="Dunca-livia1.png" alt="Dunca Livia"></div>
-                    <div class="teacher-info"><h4>Dunca Livia</h4><p class="discipline">Profesor de Chimie</p></div>
-                </div>
-            </div>
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="logo-icon">🌿</div>
+    Biologie
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">Despre</a></li>
+    <li><a href="#profesori">Profesori</a></li>
+    <li><a href="#activitati">Activități</a></li>
+    <li><a href="#galerie">Galerie</a></li>
+    <li><a href="#elevi">Elevi</a></li>
+  </ul>
+</nav>
 
-            <h2 style="color: var(--physics-color) !important; margin-top: 60px;">Catedra de Fizică</h2>
-            <div class="teachers-grid">
-                <div class="teacher-card physics-border">
-                    <div class="teacher-img"><img src="cioaba.png" alt="Cioabă Felicia"></div>
-                    <div class="teacher-info"><h4>Cioabă Felicia</h4><p class="discipline-phys">Profesor de Fizică</p></div>
-                </div>
-                <div class="teacher-card physics-border">
-                    <div class="teacher-img"><img src="cosminavadann.png" alt="Vădan Cosmina"></div>
-                    <div class="teacher-info"><h4>Vădan Cosmina</h4><p class="discipline-phys">Profesor de Fizică</p></div>
-                </div>
-                <div class="teacher-card physics-border">
-                    <div class="teacher-img"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ45c5TpNBviqg2cB0eIE0tVPerK2kWPlh3Zw&s" alt="Tetean Dinu"></div>
-                    <div class="teacher-info"><h4>Tetean Dinu</h4><p class="discipline-phys">Profesor de Fizică</p></div>
-                </div>
-            </div>
-        </section>
+<!-- HERO -->
 
-        <section>
-            <h2 style="color: var(--chemistry-color) !important;">Laboratorul în Acțiune</h2>
-            <div class="grid">
-                <div class="card">
-                    <img src="laborator_chimie.png" class="img-activity" alt="Laborator">
-                </div>
-                <div class="card">
-                    <div style="display: flex; flex-direction: column; gap: 15px;">
-                        <img src="chimie1.jpg" class="img-activity">
-                        <img src="chimie2.jpg" class="img-activity">
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="chimie92.jpg" class="img-activity">
-                    <div style="display: flex; gap: 10px; margin-top: 15px;">
-                        <img src="chimie3.jpg" style="width: 48%; border-radius: 10px;">
-                        <img src="chimie4.jpg" style="width: 48%; border-radius: 10px;">
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section style="background: #eef2f3; padding: 40px; border-radius: 30px;">
-            <h2 style="color: var(--physics-color) !important;">Tehnologie și Robotică</h2>
-            <div class="grid">
-                <div class="card">
-                    <div class="video-box">
-                        <video controls style="width: 100%;">
-                            <source src="robot_fizica.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <h4>Proiecte de Robotică</h4>
-                </div>
-                <div class="card">
-                    <div class="video-box">
-                        <video controls style="width: 100%;">
-                            <source src="experiment_fizica.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <h4>Experimente Live</h4>
-                </div>
-            </div>
-            <div class="grid" style="margin-top: 20px;">
-                <img src="expfizica1.jpg" class="img-activity">
-                <img src="fizicap1.jpg" class="img-activity">
-                <img src="9a_fizica.jpg" class="img-activity">
-            </div>
-        </section>
-
-        <section>
-            <h2>Explorări și Vizite</h2>
-            <div class="grid">
-                <div class="card">
-                    <img src="utcn_fizica.jpg" class="img-activity">
-                    <h4 style="margin-top:15px; text-align:center;">Vizite la UTCN</h4>
-                </div>
-                <div class="card">
-                    <img src="pompieri_fizica.jpg" class="img-activity">
-                    <h4 style="margin-top:15px; text-align:center;">Fizica la Pompieri</h4>
-                </div>
-                <div class="card">
-                    <img src="drumetie_fizica_chimie.jpg" class="img-activity">
-                    <h4 style="margin-top:15px; text-align:center;">Știința în Natură</h4>
-                </div>
-            </div>
-            <div class="grid">
-                 <div class="card">
-                    <img src="sapt_spatiului.jpg" class="img-activity">
-                    <h4 style="margin-top:15px; text-align:center;">Săptămâna Spațiului</h4>
-                </div>
-                <div class="card">
-                    <img src="fizica_costumatii.jpg" class="img-activity">
-                    <h4 style="margin-top:15px; text-align:center;">Știința și Arta</h4>
-                </div>
-                <div class="card">
-                    <img src="energie_regenerabila.jpg" class="img-activity">
-                    <h4 style="margin-top:15px; text-align:center;">Energie Regenerabilă</h4>
-                </div>
-            </div>
-        </section>
-
-        <section id="aplicatii">
-            <h2>De ce studiem Științele Naturii?</h2>
-            <div class="grid">
-                <div class="card" style="border-top: 5px solid var(--chemistry-color);">
-                    <i class="fas fa-flask icon" style="color: var(--chemistry-color);"></i>
-                    <h3>Chimie</h3>
-                    <p>Înțelegem compoziția lumii, de la medicamente la procesele vitale. Este știința transformării materiilor.</p>
-                </div>
-                <div class="card" style="border-top: 5px solid var(--physics-color);">
-                    <i class="fas fa-atom icon" style="color: var(--physics-color);"></i>
-                    <h3>Fizică</h3>
-                    <p>Explicăm legile fundamentale: mișcarea, energia și lumina. Este baza oricărei tehnologii moderne.</p>
-                </div>
-            </div>
-        </section>
-
+<section class="hero" id="about">
+  <div class="hero-left">
+    <p class="hero-eyebrow animate-in">Liceul Teoretic „Ana Ipătescu" · Gherla</p>
+    <h1 class="animate-in delay-1">Secretele <em>vieții</em>,<br>la <span class="accent-word">microscop</span></h1>
+    <p class="hero-sub animate-in delay-2">De la celula invizibilă la ecosistemele Terrei — biologia ne învaţă să citim cartea vieții. Laborator, teren, pasiune.</p>
+    <div class="hero-cta animate-in delay-3">
+      <a href="#profesori" class="btn-primary">
+        <i class="fas fa-leaf"></i> Cunoaște-ți viitorii profesori
+      </a>
+      <a href="#activitati" class="btn-ghost">
+        Activitățile noastre <i class="fas fa-arrow-right" style="font-size:0.8em"></i>
+      </a>
     </div>
+  </div>
 
-    <section class="testimonials">
-        <div class="container">
-            <h2 style="color: #e67e22 !important;">Cum văd elevii orele?</h2>
-            <div class="testimonial-grid">
-                <div class="testimonial-item">"Ora de chimie îmi place când facem experimente." <span class="author">Ariana, 11A</span></div>
-                <div class="testimonial-item">"La fizică mi se pare interesant când legăm lecțiile de viață." <span class="author">Eliza, 12B</span></div>
-                <div class="testimonial-item">"Dacă sunt atent, încep să înțeleg orice formulă." <span class="author">Berta, 11B</span></div>
-                <div class="testimonial-item">"Îmi plac orele în care lucrăm în echipă." <span class="author">Albert, 12A</span></div>
-            </div>
+  <div class="hero-right">
+    <div class="hero-bg-pattern"></div>
+    <div class="hero-overlay"></div>
+    <svg class="hero-svg-decoration" viewBox="0 0 600 800" xmlns="http://www.w3.org/2000/svg">
+      <!-- Cell-like circles -->
+      <circle cx="300" cy="380" r="110" fill="none" stroke="#52b788" stroke-width="1.5" opacity="0.5"/>
+      <circle cx="300" cy="380" r="40" fill="rgba(82,183,136,0.15)" stroke="#52b788" stroke-width="1" opacity="0.6"/>
+      <circle cx="300" cy="380" r="14" fill="#52b788" opacity="0.5"/>
+      <!-- Mitosis-like -->
+      <ellipse cx="260" cy="330" rx="50" ry="30" fill="none" stroke="#7de3b0" stroke-width="0.8" opacity="0.35"/>
+      <ellipse cx="340" cy="430" rx="50" ry="30" fill="none" stroke="#7de3b0" stroke-width="0.8" opacity="0.35"/>
+      <!-- DNA helix dots -->
+      <circle cx="150" cy="200" r="3" fill="#52b788" opacity="0.4"/>
+      <circle cx="170" cy="220" r="2" fill="#7de3b0" opacity="0.35"/>
+      <circle cx="140" cy="240" r="3" fill="#52b788" opacity="0.4"/>
+      <circle cx="160" cy="260" r="2" fill="#7de3b0" opacity="0.35"/>
+      <circle cx="145" cy="280" r="3" fill="#52b788" opacity="0.4"/>
+      <line x1="150" y1="200" x2="170" y2="220" stroke="#52b788" stroke-width="0.8" opacity="0.3"/>
+      <line x1="170" y1="220" x2="140" y2="240" stroke="#52b788" stroke-width="0.8" opacity="0.3"/>
+      <line x1="140" y1="240" x2="160" y2="260" stroke="#52b788" stroke-width="0.8" opacity="0.3"/>
+      <line x1="160" y1="260" x2="145" y2="280" stroke="#52b788" stroke-width="0.8" opacity="0.3"/>
+      <!-- Scattered cells -->
+      <circle cx="490" cy="150" r="20" fill="none" stroke="#52b788" stroke-width="1" opacity="0.2"/>
+      <circle cx="490" cy="150" r="7" fill="#52b788" opacity="0.2"/>
+      <circle cx="80" cy="600" r="30" fill="none" stroke="#7de3b0" stroke-width="0.8" opacity="0.15"/>
+      <circle cx="80" cy="600" r="10" fill="#52b788" opacity="0.15"/>
+      <circle cx="520" cy="680" r="16" fill="none" stroke="#52b788" stroke-width="0.8" opacity="0.18"/>
+      <!-- Leaf vein -->
+      <path d="M450 100 Q500 200 480 320 Q460 440 430 520" fill="none" stroke="#52b788" stroke-width="1" opacity="0.25"/>
+      <path d="M460 180 Q490 200 500 220" fill="none" stroke="#52b788" stroke-width="0.6" opacity="0.2"/>
+      <path d="M455 240 Q480 255 490 270" fill="none" stroke="#52b788" stroke-width="0.6" opacity="0.2"/>
+      <path d="M450 300 Q472 312 480 330" fill="none" stroke="#52b788" stroke-width="0.6" opacity="0.2"/>
+    </svg>
+    <div class="hero-panels">
+      <div class="hero-panel-card">
+        <div class="hero-panel-emoji">🔬</div>
+        <div>
+          <h3>Biologie Celulară</h3>
+          <p>Celule, ADN și misterele vieții la nivel molecular</p>
         </div>
-    </section>
+      </div>
+      <div class="hero-panel-card">
+        <div class="hero-panel-emoji">🌿</div>
+        <div>
+          <h3>Botanică & Ecologie</h3>
+          <p>Plante, ecosisteme și natura care ne înconjoară</p>
+        </div>
+      </div>
+      <div class="hero-panel-card">
+        <div class="hero-panel-emoji">🫀</div>
+        <div>
+          <h3>Anatomie & Fiziologie</h3>
+          <p>Corpul uman — structură, funcție și adaptare</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <footer>
-        <p>&copy; Liceul Teoretic „Ana Ipătescu” Gherla, 2026</p>
-    </footer>
+<!-- STATS -->
+
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <span class="stat-num">3</span>
+      <span class="stat-label">Profesori</span>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num">1</span>
+      <span class="stat-label">Laborator</span>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num">∞</span>
+      <span class="stat-label">Specii studiate</span>
+    </div>
+    <div class="stat-item reveal">
+      <span class="stat-num">🏆</span>
+      <span class="stat-label">Olimpiade</span>
+    </div>
+  </div>
+</div>
+
+<!-- WHY -->
+
+<section id="activitati">
+  <div class="container">
+    <p class="section-tag reveal"><i class="fas fa-seedling"></i> De ce contează</p>
+    <h2 class="section-title reveal">Fiecare celulă,<br>o poveste de spus</h2>
+    <p class="section-desc reveal">Biologia nu este doar o materie — este cheia pentru a înțelege tot ce este viu, inclusiv pe tine însuți.</p>
+
+```
+<div class="why-grid reveal">
+  <div class="why-card bio">
+    <div class="why-icon"><i class="fas fa-microscope"></i></div>
+    <h3>De ce Biologie?</h3>
+    <p>Biologia explică viața în toate formele ei — de la viruși microscopici la ecosisteme întregi. Stă la baza medicinei, farmaciei, agronomiei și multor alte domenii esențiale.</p>
+  </div>
+  <div class="why-card earth">
+    <div class="why-icon"><i class="fas fa-dna"></i></div>
+    <h3>Genetică & Viitor</h3>
+    <p>Înțelegând ADN-ul și ereditatea, deschidem porți spre biotehnologie, medicină personalizată și soluții la marile provocări ale omenirii.</p>
+  </div>
+  <div class="why-card gold">
+    <div class="why-icon"><i class="fas fa-flask"></i></div>
+    <h3>Ce resurse avem?</h3>
+    <p>Laborator echipat cu microscoapele, preparate microscopice, modele anatomice, planșe și materiale didactice actualizate pentru o experiență completă.</p>
+  </div>
+  <div class="why-card dark-card">
+    <div class="why-icon"><i class="fas fa-trophy"></i></div>
+    <h3>Unde participăm?</h3>
+    <p>Olimpiade județene și naționale de biologie, proiecte de mediu, vizite la facultăți de medicină și grădini botanice, activități de eco-educație.</p>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- TEACHERS -->
+
+<section id="profesori">
+  <div class="container">
+    <p class="section-tag reveal"><i class="fas fa-chalkboard-teacher"></i> Echipa noastră</p>
+    <h2 class="section-title reveal">Profesori cu drag<br>de știință și elevi</h2>
+    <p class="section-desc reveal">O echipă dedicată care transformă fiecare oră de biologie într-o aventură a cunoașterii.</p>
+
+```
+<span class="dept-label bio-lbl reveal"><i class="fas fa-leaf" style="margin-right:6px"></i> Catedra de Biologie</span>
+<div class="teachers-row">
+  <div class="teacher-card reveal">
+    <img src="https://raw.githubusercontent.com/anaipatescu12/chimie-fizica.io/main/balint_antoaneta.png" class="teacher-avatar" alt="Balint Antoaneta"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="teacher-avatar-placeholder" style="display:none">BA</div>
+    <div class="teacher-info">
+      <h4>Balint Antoaneta</h4>
+      <span>Profesor de Biologie</span>
+    </div>
+  </div>
+  <div class="teacher-card reveal delay-1">
+    <img src="https://raw.githubusercontent.com/anaipatescu12/chimie-fizica.io/main/roman_anamaria.png" class="teacher-avatar" alt="Roman Anamaria"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="teacher-avatar-placeholder" style="display:none">RA</div>
+    <div class="teacher-info">
+      <h4>Roman Anamaria</h4>
+      <span>Profesor de Biologie</span>
+    </div>
+  </div>
+  <div class="teacher-card reveal delay-2">
+    <img src="https://raw.githubusercontent.com/anaipatescu12/chimie-fizica.io/main/rus_adriana.png" class="teacher-avatar" alt="Rus Adriana"
+      onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+    <div class="teacher-avatar-placeholder" style="display:none">RA</div>
+    <div class="teacher-info">
+      <h4>Rus Adriana</h4>
+      <span>Profesor de Biologie</span>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ACTIVITIES -->
+
+<section class="activities-section">
+  <div class="container">
+    <div class="activities-layout">
+      <div class="activities-text">
+        <p class="section-tag reveal"><i class="fas fa-rocket"></i> Ce facem</p>
+        <h2 class="section-title reveal">Dincolo de manual</h2>
+        <p class="section-desc reveal">Biologia se trăiește în laborator, în natură și oriunde există viață. Ieșim din clasă și explorăm.</p>
+      </div>
+      <div>
+        <div class="activity-item reveal">
+          <span class="activity-num">01</span>
+          <div class="activity-content">
+            <h4>Laborator & Microscopie</h4>
+            <p>Observăm celule, țesuturi și organisme la microscop. Preparăm și analizăm probe din natură.</p>
+          </div>
+        </div>
+        <div class="activity-item reveal delay-1">
+          <span class="activity-num">02</span>
+          <div class="activity-content">
+            <h4>Ecologie & Teren</h4>
+            <p>Drumeții, colectare de probe, studii de biodiversitate și proiecte de mediu în natură.</p>
+          </div>
+        </div>
+        <div class="activity-item reveal delay-2">
+          <span class="activity-num">03</span>
+          <div class="activity-content">
+            <h4>Vizite Academice</h4>
+            <p>Facultăți de medicină, grădini botanice și zoologice, muzee de științe naturale.</p>
+          </div>
+        </div>
+        <div class="activity-item reveal delay-3">
+          <span class="activity-num">04</span>
+          <div class="activity-content">
+            <h4>Olimpiade & Concursuri</h4>
+            <p>Pregătire pentru performanță la olimpiadele județene și naționale de biologie.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIE -->
+
+<section class="media-section" id="galerie">
+  <div class="container">
+    <p class="section-tag reveal"><i class="fas fa-images"></i> Galerie</p>
+    <h2 class="section-title reveal">Momente din laborator<br>și din natură</h2>
+    <p class="section-desc reveal">Imagini din activitățile noastre de-a lungul anului școlar.</p>
+
+```
+<p class="gallery-sub-label reveal"><i class="fas fa-microscope" style="margin-right:6px"></i> Laborator de Biologie</p>
+<div class="media-grid reveal">
+  <div class="media-item media-placeholder">🔬</div>
+  <div class="media-item media-placeholder">🧫</div>
+  <div class="media-item media-placeholder">🧬</div>
+  <div class="media-item media-placeholder">🌱</div>
+  <div class="media-item media-placeholder">🦠</div>
+</div>
+
+<p class="gallery-sub-label reveal" style="margin-top:20px"><i class="fas fa-tree" style="margin-right:6px"></i> Activități & Teren</p>
+<div class="media-grid reveal">
+  <div class="media-item media-placeholder">🌿</div>
+  <div class="media-item media-placeholder">🦋</div>
+  <div class="media-item media-placeholder">🌍</div>
+  <div class="media-item media-placeholder">🫀</div>
+  <div class="media-item media-placeholder">🏆</div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+
+<section class="testimonials-section" id="elevi">
+  <div class="container">
+    <p class="section-tag reveal"><i class="fas fa-quote-left"></i> Vocea elevilor</p>
+    <h2 class="section-title reveal" style="margin-bottom: 48px;">Ce spun ei despre<br>orele noastre</h2>
+
+```
+<div class="testimonials-grid">
+  <div class="testimonial-card reveal">
+    <blockquote>„Când am văzut prima oară o celulă la microscop, nu am putut să cred că viața arată așa. E fascinant."</blockquote>
+    <div class="testimonial-author">
+      <div class="author-dot">M</div>
+      <span>Maria · Clasa 10B</span>
+    </div>
+  </div>
+  <div class="testimonial-card reveal delay-1">
+    <blockquote>„Biologia m-a convins să urmez medicina. Acum știu că acesta e drumul meu."</blockquote>
+    <div class="testimonial-author">
+      <div class="author-dot">A</div>
+      <span>Andrei · Clasa 12A</span>
+    </div>
+  </div>
+  <div class="testimonial-card reveal delay-2">
+    <blockquote>„Ieșirile în natură sunt cele mai memorabile ore din liceu. Înveți și te bucuri în același timp."</blockquote>
+    <div class="testimonial-author">
+      <div class="author-dot">I</div>
+      <span>Ioana · Clasa 11C</span>
+    </div>
+  </div>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="container">
+    <span class="footer-icon">🌿</span>
+    <div class="footer-logo">Biologie</div>
+    <p><strong>Liceul Teoretic „Ana Ipătescu"</strong> · Gherla, Cluj</p>
+    <p style="margin-top:8px">© 2026 · Toate drepturile rezervate</p>
+  </div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.transitionDelay = (e.target.dataset.delay || 0) + 'ms';
+      e.target.classList.add('visible');
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+reveals.forEach((el, i) => {
+  const siblings = Array.from(el.parentElement?.children || []).filter(c => c.classList.contains('reveal'));
+  const idx = siblings.indexOf(el);
+  if (idx > 0) el.dataset.delay = idx * 80;
+  observer.observe(el);
+});
+
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.boxShadow = window.scrollY > 20 ? '0 1px 20px rgba(0,0,0,0.07)' : 'none';
+});
+</script>
 
 </body>
 </html>
