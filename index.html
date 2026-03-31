@@ -371,46 +371,48 @@ section { padding: 96px 0; }
 .teachers-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 26px;
   margin-bottom: 64px;
 }
 
 .teacher-card {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.14);
   border-radius: var(--radius);
-  padding: 32px 28px;
+  padding: 38px 32px;
+  min-height: 152px;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 22px;
   transition: all 0.3s;
 }
 
 .teacher-card:hover {
-  background: rgba(255,255,255,0.07);
-  border-color: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.11);
+  border-color: rgba(255,255,255,0.24);
   transform: translateY(-2px);
 }
 
 .teacher-avatar {
-  width: 68px;
-  height: 68px;
+  width: 86px;
+  height: 86px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
-  border: 2px solid rgba(255,255,255,0.1);
+  border: 3px solid rgba(255,255,255,0.2);
 }
 
 .teacher-info h4 {
   font-family: var(--serif);
-  font-size: 1.05rem;
+  font-size: 1.28rem;
   color: white;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
 }
 
 .teacher-info span {
-  font-size: 0.8rem;
+  font-size: 0.96rem;
   font-weight: 500;
+  letter-spacing: 0.01em;
   color: #7de3b0;
 }
 
@@ -804,7 +806,7 @@ footer strong { color: rgba(255,255,255,0.7); }
     <span class="dept-label reveal"><i class="fas fa-leaf" style="margin-right:6px"></i> Catedra de Biologie</span>
     <div class="teachers-row">
       <div class="teacher-card reveal">
-        <img src="roman.png" class="teacher-avatar" alt="Roman Anamaria">
+        <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" class="teacher-avatar" alt="Roman Anamaria">
         <div class="teacher-info">
           <h4>Roman Anamaria</h4>
           <span>Profesor de Biologie</span>
@@ -818,9 +820,9 @@ footer strong { color: rgba(255,255,255,0.7); }
         </div>
       </div>
       <div class="teacher-card reveal delay-2">
-        <img src="balint.png" class="teacher-avatar" alt="Baint Antoaneta">
+        <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png" class="teacher-avatar" alt="Baint Antoaneta">
         <div class="teacher-info">
-          <h4>Balint Antoaneta</h4>
+          <h4>Baint Antoaneta</h4>
           <span>Profesor de Biologie</span>
         </div>
       </div>
@@ -875,7 +877,7 @@ footer strong { color: rgba(255,255,255,0.7); }
 <section class="media-section" id="galerie">
   <div class="container">
     <p class="section-tag bio reveal"><i class="fas fa-images"></i> Galerie</p>
-    <h2 class="section-title reveal">Momente din viața de zi cu zi<br>și din activități</h2>
+    <h2 class="section-title reveal">Momente din laborator<br>și din activități</h2>
     <p class="section-desc reveal">Selecție foto-video din activitățile catedrei de Biologie.</p>
 
     <div class="media-grid reveal">
